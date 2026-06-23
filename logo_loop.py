@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+logo_loop — le LOGO VIVANT de DECHARGE : un oscilloscope qui morphe
+cercle -> eclair -> dodo -> Lissajous -> cercle, en boucle, blanc sur noir.
+C'est l'asset hero recommande par le panel (approche E). Et c'est un vrai
+signal : le WAV produit, joue dans un scope, redessine le morph.
+"""
+import os, math, subprocess
+import numpy as np
+from PIL import Image, ImageDraw, ImageFilter
+
+SR = 96000
+N = 1600                       # points par forme
+W = 720                        # taille image
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "samples")
+
+DODO = [(22,74),(42,62),(50,60),(58,42),(72,34),(84,40),(90,56),(96,78),(130,70),
+        (158,82),(170,112),(158,150),(150,156),(152,184),(162,188),(150,158),(134,160),
+        (132,184),(122,186),(130,158),(110,160),(90,140),(80,112),(74,88),(58,84),(40,82),(22,74)]
+
+
+def resample(P, n):
+    P = np.asarray(P, float)
+    d = np.sqrt((np.diff(P, axis=0) ** 2).sum(1)); u = np.concatenate([[0], np.cumsum(d)])
+    uu = np.linspace(0, u[-1], n)
+    return np.interp(uu, u, P[:, 0]), np.interp(uu, u, P[:, 1])
+
+
+def norm(x, y, flip=False):
+    if flip: y = -y
+    x = x - (x.max() + x.min()) / 2; y = y - (y.max() + y.min()) / 2
+    m = max(np.abs(x).max(), np.abs(y).max()) or 1.0
+    return x / m * 0.9, y / m * 0.9
+
+
+def shape(name):
+    t = np.linspace(0, 2 * math.pi, N, endpoint=False)
+    if name == "circle":
+        return norm(np.cos(t), np.sin(t))
+    if name == "lissajous":
+        return norm(np.sin(3 * t + math.pi / 2), np.sin(2 * t))
+    if name == "eclair":
+        seg = [(0,1),(-.25,.35),(.12,.30),(-.18,-.25),(.20,-.30),(-.05,-1),
+               (.05,-1),(-.15,-.25),(.22,-.20),(-.10,.32),(.28,.38),(.04,1)]
+        x, y = resample(seg, N); return norm(x, y)
+    if name == "dodo":
+        x, y = resample(DODO, N); return norm(x, y, flip=True)
+
+
+def render(x, y, size=W):
+    sc = size * 0.42; c = size / 2.0
+    pts = list(zip((c + x * sc).tolist(), (c - y * sc).tolist()))
+    core = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(core).line(pts, fill=255, width=2, joint="curve")
+    acc = np.asarray(core, np.float32).copy()
+    for r, w in ((2, .7), (7, .5), (18, .35)):
+        acc += np.asarray(core.filter(ImageFilter.GaussianBlur(r)), np.float32) * w
+    acc = np.clip(acc / acc.max() * 1.7, 0, 1)
+    g = np.dstack([acc, acc, acc])               # blanc sur noir
+    return Image.fromarray((g * 255).astype(np.uint8), "RGB")
+
+
+def main():
+    keys = ["circle", "eclair", "dodo", "lissajous", "circle"]
+    S = [shape(k) for k in keys]
+    framedir = os.path.join(OUT, "_logo_frames"); os.makedirs(framedir, exist_ok=True)
+    PER, HOLD = 26, 6
+    allx, ally = [], []
+    idx = 0
+    for i in range(len(S) - 1):
+        ax, ay = S[i]; bx, by = S[i + 1]
+        for h in range(HOLD):                    # tenue sur la forme
+            allx.append(ax); ally.append(ay)
+            render(ax, ay).save(os.path.join(framedir, "f%04d.png" % idx)); idx += 1
+        for f in range(PER):                     # transition ease-in-out
+            k = 0.5 - 0.5 * math.cos(math.pi * f / PER)
+            mx, my = ax * (1 - k) + bx * k, ay * (1 - k) + by * k
+            allx.append(mx); ally.append(my)
+            render(mx, my).save(os.path.join(framedir, "f%04d.png" % idx)); idx += 1
+    X = np.concatenate(allx); Y = np.concatenate(ally)
+    # WAV : le morph entier comme signal
+    import wave
+    inter = np.empty(X.size * 2, dtype=np.float32); inter[0::2] = X; inter[1::2] = Y
+    pcm = (np.clip(inter, -1, 1) * 32767).astype("<i2")
+    with wave.open(os.path.join(OUT, "logo_loop.wav"), "wb") as w:
+        w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
+    # GIF + MP4
+    gif = os.path.join(OUT, "decharge_logo.gif")
+    subprocess.run(["ffmpeg", "-y", "-framerate", "25", "-i", os.path.join(framedir, "f%04d.png"),
+                    "-vf", "scale=460:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse",
+                    "-loop", "0", gif], capture_output=True)
+    mp4 = os.path.join(OUT, "decharge_logo.mp4")
+    subprocess.run(["ffmpeg", "-y", "-framerate", "25", "-i", os.path.join(framedir, "f%04d.png"),
+                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", mp4], capture_output=True)
+    print("logo OK | frames=%d | gif=%s | mp4=%s | wav=logo_loop.wav" % (idx, gif, mp4))
+
+
+if __name__ == "__main__":
+    main()
