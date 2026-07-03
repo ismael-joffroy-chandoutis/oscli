@@ -39,3 +39,5 @@ Built in the lineage of [osci-render](https://github.com/jameshball/osci-render)
 ## License
 Code: MIT (see LICENSE). Texts (METHODE.md, ECOSYSTEME.md): CC BY-SA 4.0.
 Author: Ismaël Joffroy Chandoutis.
+
+By [Ismaël Joffroy Chandoutis](https://ismaeljoffroychandoutis.com).
