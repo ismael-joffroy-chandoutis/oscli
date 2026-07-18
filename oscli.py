@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-oscli — oscilloscope CLI headless pour DECHARGE.
+oscli — oscilloscope CLI headless.
 
-Comble le manque confirme par la recherche : osci-render n'a pas de mode
-ligne de commande. oscli convertit un vecteur (SVG, OBJ, ou forme integree)
-en WAV stereo XY (gauche = X, droite = Y), rejouable dans un vrai oscilloscope,
-et en rend un apercu PNG (glow phosphore). Entierement scriptable, donc
-orchestrable par Claude Code (Blender -> SVG/OBJ -> oscli -> WAV -> chaine).
+osci-render n'a pas de mode ligne de commande : oscli comble ce manque.
+Il convertit un vecteur (SVG, OBJ, ou forme integree) en WAV stereo XY
+(gauche = X, droite = Y), rejouable dans un vrai oscilloscope, et en rend
+un apercu PNG (glow phosphore). Entierement scriptable et automatisable
+(Blender -> SVG/OBJ -> oscli -> WAV -> chaine).
 
 Exemples :
   python3 oscli.py --input forme.svg --out-wav f.wav --out-png f.png
