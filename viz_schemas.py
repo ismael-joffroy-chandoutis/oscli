@@ -8,7 +8,7 @@ Sortie : bible/visuels/schema_*.png (+ .svg)
 """
 import os, subprocess
 
-OUT = "/Users/ismaeljoffroychandoutis/Projects/decharge/bible/visuels"
+OUT = os.environ.get("OSCLI_VIZ_OUT", "./visuels")
 os.makedirs(OUT, exist_ok=True)
 
 HEAD = '''digraph {{
