@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-viz_fiche — genere une FICHE-RESUME visuelle (carte synoptique) a partir
+viz_fiche : genere une FICHE-RESUME visuelle (carte synoptique) a partir
 d'un fichier markdown structure (titre, verification, points cles, acteurs,
 risques).
 

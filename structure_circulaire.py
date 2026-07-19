@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-structure_circulaire — animatique en boucle pour oscilloscope. Morph :
+structure_circulaire : animatique en boucle pour oscilloscope. Morph :
 cercle calme -> eclair -> Lissajous -> spirale -> cercle. La boucle est
 fermee (circulaire). Blanc sur noir, et c'est un vrai signal (le WAV le
 dessine).

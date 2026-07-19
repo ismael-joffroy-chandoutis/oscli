@@ -1,4 +1,4 @@
-# Méthode — un cinéma d'oscilloscope, outils libres, orchestré
+# Méthode : un cinéma d'oscilloscope, outils libres, orchestré
 
 > Texte de méthode, CC BY-SA 4.0. Comment fabriquer des images dont le son est la matière, avec des outils libres et une chaîne que l'on tient de bout en bout.
 

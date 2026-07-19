@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-viz_schemas — schemas techniques pour oscilloscope (routage du signal live,
+viz_schemas : schemas techniques pour oscilloscope (routage du signal live,
 mod Vectrex, captation d'ecran), en graphviz. Deterministe (donc exact,
 contrairement a une image generee). Charte noir + vert phosphore, rouge pour
 les avertissements.
@@ -22,7 +22,7 @@ HEAD = '''digraph {{
 '''
 
 SCHEMAS = {
-"live": ("Performance live — routage du signal", "LR", '''
+"live": ("Performance live : routage du signal", "LR", '''
   pc    [label="Ordinateur\\nosci-render / Pure Data / TouchDesigner", fillcolor="#123524"];
   link  [label="Ableton Link\\nsync tempo (<5 ms LAN)", shape=octagon, fillcolor="#231a10", color="#b6863f", fontcolor="#ffe9c0"];
   dc    [label="Interface DC-couplée\\nES-8 (±10 V, 96 kHz)"];
@@ -40,7 +40,7 @@ SCHEMAS = {
   link -> pc [style=dashed, color="#b6863f"];
 '''),
 
-"vectrex_mod": ("Mod Vectrex — entrée XY/Z externe (réversible)", "LR", '''
+"vectrex_mod": ("Mod Vectrex : entrée XY/Z externe (réversible)", "LR", '''
   dc    [label="Interface DC-couplée\\nsorties X / Y / Z (±10 V)", fillcolor="#123524"];
   att   [label="Atténuateurs\\n±10 V → ±9 / ±11 V"];
   conn  [label="Connecteur d'interception\\nCPU ↔ driver CRT (réversible)", shape=note, fillcolor="#142e20"];
@@ -49,7 +49,7 @@ SCHEMAS = {
   jz    [label="Jack Z · fil blanc · intensité"];
   crt   [label="Carte driver CRT\\n→ écran vectoriel", fillcolor="#10291c"];
   sk    [label="SPOT KILLER\\nswitch SPST 110 V\\nfermé = mode synthèse", color="#c95f3f", fillcolor="#2a1411", fontcolor="#ffd9cf"];
-  hv    [label="⚠ HAUTE TENSION\\nphosphore fragile · risque de brûlure résiduelle\\nréf : PDF Andrew Duff 2014 + README Holzer", shape=box, color="#c95f3f", fillcolor="#180a08", fontcolor="#ffb3a3"];
+  hv    [label="HAUTE TENSION\\nphosphore fragile · risque de brûlure résiduelle\\nréf : PDF Andrew Duff 2014 + README Holzer", shape=box, color="#c95f3f", fillcolor="#180a08", fontcolor="#ffb3a3"];
   dc -> att -> conn;
   conn -> jx; conn -> jy; conn -> jz;
   jx -> crt; jy -> crt; jz -> crt;
@@ -57,7 +57,7 @@ SCHEMAS = {
   hv -> crt [style=dotted, color="#c95f3f", arrowhead=none];
 '''),
 
-"capture": ("Captation de l'écran — deux voies", "TB", '''
+"capture": ("Captation de l'écran : deux voies", "TB", '''
   scope [label="Oscilloscope CRT / Vectrex\\n(phosphore, glow réel)", fillcolor="#10291c"];
   setup [label="Pièce noire · polarisant circulaire\\nfiltre diffusion (graisse / bas nylon)\\noptique macro · longue exposition", shape=note, fillcolor="#142e20"];
   cam   [label="Caméra"];

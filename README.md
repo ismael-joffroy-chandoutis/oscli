@@ -1,6 +1,6 @@
 **English** · [Français](README.fr.md)
 
-# oscli — headless oscilloscope (XY) toolkit
+# oscli: headless oscilloscope (XY) toolkit
 
 Turn vector shapes (SVG, OBJ, built-ins) into stereo **XY audio** plus phosphor-glow images, fully headless and scriptable. `oscli` fills a gap in the oscilloscope-music ecosystem: a command-line tool, where osci-render and OsciStudio are GUI apps.
 
@@ -9,10 +9,10 @@ Turn vector shapes (SVG, OBJ, built-ins) into stereo **XY audio** plus phosphor-
 > Le son EST l'image. The sound IS the image. (Oscilloscope XY mode: left channel drives X, right channel drives Y.)
 
 ## What's inside
-- **oscli.py** — vector (SVG / OBJ / built-in) to WAV stereo XY plus PNG (and a rotating MP4). The core tool.
-- **structure_circulaire.py / logo_loop.py** — morph animations (shape to shape) rendered to GIF/MP4 plus a real WAV (playable on a scope).
-- **blender_to_osc.py** — Blender (headless) to OBJ to oscilloscope. Run with `blender -b -P blender_to_osc.py -- out.obj`.
-- **viz_fiche.py / viz_schemas.py** — graphviz-based synoptic cards and technical diagrams (companion tooling).
+- **oscli.py**: vector (SVG / OBJ / built-in) to WAV stereo XY plus PNG (and a rotating MP4). The core tool.
+- **structure_circulaire.py / logo_loop.py**: morph animations (shape to shape) rendered to GIF/MP4 plus a real WAV (playable on a scope).
+- **blender_to_osc.py**: Blender (headless) to OBJ to oscilloscope. Run with `blender -b -P blender_to_osc.py -- out.obj`.
+- **viz_fiche.py / viz_schemas.py**: graphviz-based synoptic cards and technical diagrams (companion tooling).
 
 ## Install
 Python 3, plus `numpy` and `pillow`. `ffmpeg` for GIF/MP4 export. `graphviz` (the `dot` binary) for the viz scripts.

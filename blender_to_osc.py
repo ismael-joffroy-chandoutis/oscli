@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-blender_to_osc — chaine Blender -> vecteur -> oscilloscope, en headless.
+blender_to_osc : chaine Blender -> vecteur -> oscilloscope, en headless.
 A lancer avec : blender -b -P blender_to_osc.py -- <sortie.obj>
 Cree un objet 3D (Suzanne), le tourne, projette ses aretes en 2D, et ecrit
 un OBJ (v + l) que oscli convertit ensuite en WAV XY + image.

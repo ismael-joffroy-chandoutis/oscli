@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-oscli — oscilloscope CLI headless.
+oscli : oscilloscope CLI headless.
 
 osci-render n'a pas de mode ligne de commande : oscli comble ce manque.
 Il convertit un vecteur (SVG, OBJ, ou forme integree) en WAV stereo XY

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-logo_loop — boucle de morphing pour oscilloscope : cercle -> eclair -> dodo
+logo_loop : boucle de morphing pour oscilloscope : cercle -> eclair -> dodo
 -> Lissajous -> cercle, en boucle, blanc sur noir. Et c'est un vrai signal :
 le WAV produit, joue dans un scope, redessine le morph.
 Sortie : samples/logo_loop.gif / .mp4 / .wav
