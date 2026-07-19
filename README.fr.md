@@ -4,6 +4,8 @@
 
 Transforme des formes vectorielles (SVG, OBJ, formes intégrées) en **audio stéréo XY**, plus des images à lueur phosphorescente, entièrement headless et scriptable. `oscli` comble un vide dans l'écosystème de la musique d'oscilloscope : un outil en ligne de commande, là où osci-render et OsciStudio sont des applications graphiques.
 
+<img src="monde.jpg" alt="oscli" width="100%">
+
 > Le son EST l'image. Le son EST l'image. (Mode XY d'oscilloscope : le canal gauche pilote X, le canal droit pilote Y.)
 
 ## Contenu

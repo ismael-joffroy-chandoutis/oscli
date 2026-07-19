@@ -4,6 +4,8 @@
 
 Turn vector shapes (SVG, OBJ, built-ins) into stereo **XY audio** plus phosphor-glow images, fully headless and scriptable. `oscli` fills a gap in the oscilloscope-music ecosystem: a command-line tool, where osci-render and OsciStudio are GUI apps.
 
+<img src="monde.jpg" alt="oscli" width="100%">
+
 > Le son EST l'image. The sound IS the image. (Oscilloscope XY mode: left channel drives X, right channel drives Y.)
 
 ## What's inside
