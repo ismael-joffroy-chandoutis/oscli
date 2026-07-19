@@ -6,7 +6,7 @@ Transforme des formes vectorielles (SVG, OBJ, formes intégrées) en **audio st�
 
 <img src="monde.jpg" alt="oscli" width="100%">
 
-> Le son EST l'image. Le son EST l'image. (Mode XY d'oscilloscope : le canal gauche pilote X, le canal droit pilote Y.)
+> Le son EST l'image. (Mode XY d'oscilloscope : le canal gauche pilote X, le canal droit pilote Y.)
 
 ## Contenu
 - **oscli.py** : vecteur (SVG / OBJ / intégré) vers WAV stéréo XY plus PNG (et un MP4 rotatif). L'outil central.
@@ -29,7 +29,7 @@ python3 oscli.py --input builtin:lissajous --out-png liss.png
 Support SVG : `<path>` (M L H V C Q Z, absolus et relatifs) plus `<polyline>` / `<polygon>`. OBJ : sommets plus arêtes de lignes. Le WAV est un vrai signal : joue-le dans un oscilloscope analogique en mode XY (ou dans osci-render) et il redessine l'image.
 
 ## Exemples
-Chaque fixe et boucle ci-dessous est rendu à partir d'audio.
+Chaque image fixe et boucle ci-dessous est rendue à partir d'audio.
 
 <img src="examples/lissajous.png" alt="figure de Lissajous" width="24%"> <img src="examples/eclair.png" alt="éclair dentelé" width="24%"> <img src="examples/blender_osc.png" alt="Suzanne de Blender dessinée par le son" width="24%"> <img src="examples/oscli_svg.png" alt="SVG tracé par le son" width="24%">
 
