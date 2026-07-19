@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-viz_schemas — schemas techniques / mises en situation DECHARGE, en graphviz.
-Deterministe (donc exact, contrairement a une image generee). Charte noir + vert
-phosphore, rouge pour les avertissements. Donnees issues des recherches verifiees.
-Sortie : bible/visuels/schema_*.png (+ .svg)
+viz_schemas — schemas techniques pour oscilloscope (routage du signal live,
+mod Vectrex, captation d'ecran), en graphviz. Deterministe (donc exact,
+contrairement a une image generee). Charte noir + vert phosphore, rouge pour
+les avertissements.
+Sortie : ./visuels/schema_*.png (+ .svg), override via OSCLI_VIZ_OUT.
 """
 import os, subprocess
 

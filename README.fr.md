@@ -29,7 +29,13 @@ python3 oscli.py --input builtin:lissajous --out-png liss.png
 Support SVG : `<path>` (M L H V C Q Z, absolus et relatifs) plus `<polyline>` / `<polygon>`. OBJ : sommets plus arêtes de lignes. Le WAV est un vrai signal : joue-le dans un oscilloscope analogique en mode XY (ou dans osci-render) et il redessine l'image.
 
 ## Exemples
-Voir `examples/` : une figure de Lissajous, un « éclair » dentelé, Suzanne de Blender dessinée par le son, et un morphing circulaire (cercle calme à éclair à Lissajous à spirale, en boucle). Chaque fixe et boucle est rendu à partir d'audio.
+Chaque fixe et boucle ci-dessous est rendu à partir d'audio.
+
+<img src="examples/lissajous.png" alt="figure de Lissajous" width="24%"> <img src="examples/eclair.png" alt="éclair dentelé" width="24%"> <img src="examples/blender_osc.png" alt="Suzanne de Blender dessinée par le son" width="24%"> <img src="examples/oscli_svg.png" alt="SVG tracé par le son" width="24%">
+
+<img src="examples/structure_circulaire.gif" alt="morphing circulaire en boucle" width="50%">
+
+Une figure de Lissajous, un « éclair » dentelé, Suzanne de Blender dessinée par le son, un SVG tracé par le son, et un morphing circulaire (cercle calme à éclair à Lissajous à spirale, en boucle). Voir aussi `examples/morph.mp4` et le dossier `examples/` complet.
 
 ## Écosystème
 [ECOSYSTEME.md](ECOSYSTEME.md) est un catalogue sourcé de la scène open-source de l'oscilloscope / vecteur / Vectrex / laser (dépôts vérifiés, scène contemporaine, festivals).
@@ -41,7 +47,7 @@ Voir `examples/` : une figure de Lissajous, un « éclair » dentelé, Suzanne d
 Construit dans la filiation d'[osci-render](https://github.com/jameshball/osci-render) (James Ball) et de [vectorsynthesis](https://github.com/macumbista/vectorsynthesis) (Derek Holzer). `oscli` est le compagnon headless en ligne de commande qu'ils ne fournissent pas. Merci à la communauté de la musique d'oscilloscope.
 
 ## Licence
-Code : MIT (voir LICENSE). Textes (METHODE.md, ECOSYSTEME.md) : CC BY-SA 4.0.
+Code : MIT (voir LICENSE). Textes (METHODE.md, ECOSYSTEME.md) : CC BY-SA 4.0 (voir LICENSE-DOCS.md).
 Auteur : Ismaël Joffroy Chandoutis.
 
 Par [Ismaël Joffroy Chandoutis](https://ismaeljoffroychandoutis.com).

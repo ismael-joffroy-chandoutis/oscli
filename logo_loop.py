@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-logo_loop — le LOGO VIVANT de DECHARGE : un oscilloscope qui morphe
-cercle -> eclair -> dodo -> Lissajous -> cercle, en boucle, blanc sur noir.
-C'est l'asset hero recommande par le panel (approche E). Et c'est un vrai
-signal : le WAV produit, joue dans un scope, redessine le morph.
+logo_loop — boucle de morphing pour oscilloscope : cercle -> eclair -> dodo
+-> Lissajous -> cercle, en boucle, blanc sur noir. Et c'est un vrai signal :
+le WAV produit, joue dans un scope, redessine le morph.
+Sortie : samples/logo_loop.gif / .mp4 / .wav
 """
 import os, math, subprocess
 import numpy as np
@@ -86,11 +86,11 @@ def main():
     with wave.open(os.path.join(OUT, "logo_loop.wav"), "wb") as w:
         w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
     # GIF + MP4
-    gif = os.path.join(OUT, "decharge_logo.gif")
+    gif = os.path.join(OUT, "logo_loop.gif")
     subprocess.run(["ffmpeg", "-y", "-framerate", "25", "-i", os.path.join(framedir, "f%04d.png"),
                     "-vf", "scale=460:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse",
                     "-loop", "0", gif], capture_output=True)
-    mp4 = os.path.join(OUT, "decharge_logo.mp4")
+    mp4 = os.path.join(OUT, "logo_loop.mp4")
     subprocess.run(["ffmpeg", "-y", "-framerate", "25", "-i", os.path.join(framedir, "f%04d.png"),
                     "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", mp4], capture_output=True)
     print("logo OK | frames=%d | gif=%s | mp4=%s | wav=logo_loop.wav" % (idx, gif, mp4))

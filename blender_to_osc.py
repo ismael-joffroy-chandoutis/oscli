@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-blender_to_osc — POC2 : prouver la chaine Blender -> vecteur -> oscilloscope.
-A lancer en headless : blender -b -P blender_to_osc.py -- <sortie.obj>
+blender_to_osc — chaine Blender -> vecteur -> oscilloscope, en headless.
+A lancer avec : blender -b -P blender_to_osc.py -- <sortie.obj>
 Cree un objet 3D (Suzanne), le tourne, projette ses aretes en 2D, et ecrit
 un OBJ (v + l) que oscli convertit ensuite en WAV XY + image.
-Demontre le workflow du chapitre 05/10 sans interface graphique.
 """
 import bpy, sys, math
 
@@ -33,7 +32,7 @@ zs = [v.z for v in verts]
 edges = [(e.vertices[0], e.vertices[1]) for e in me.edges]
 
 with open(out, "w") as f:
-    f.write("# Suzanne projetee 2D pour oscilloscope (POC2 DECHARGE)\n")
+    f.write("# Suzanne projetee 2D pour oscilloscope\n")
     for v in verts:
         f.write("v %.5f %.5f 0\n" % (v.x, v.z))
     for a, b in edges:

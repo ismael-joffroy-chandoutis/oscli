@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 viz_fiche — genere une FICHE-RESUME visuelle (carte synoptique) a partir
-d'un digest de recherche verifie (recherche/<domaine>.md) de DECHARGE.
+d'un fichier markdown structure (titre, verification, points cles, acteurs,
+risques).
 
-Systematise la demande "a chaque recherche, un resume en visuel".
 Sortie : un PNG (et SVG) carte sur charte noir + vert phosphore, via graphviz.
 
-Usage : python3 viz_fiche.py recherche/<domaine>.md bible/visuels/<domaine>.png
+Usage : python3 viz_fiche.py input.md out.png
 """
 import sys, re, os, html, subprocess
 

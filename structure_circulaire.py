@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-structure_circulaire — animatique de la structure CIRCULAIRE du film DECHARGE
-(esprit LIMBO, non-verbal). Morph en boucle: cercle calme -> eclair (decharge)
--> Lissajous (hallucination) -> spirale (descente) -> cercle. La boucle EST la
-circularite du film. Blanc sur noir, et c'est un vrai signal (le WAV le dessine).
-Sortie: samples/structure_circulaire.gif / .mp4 / .wav
+structure_circulaire — animatique en boucle pour oscilloscope. Morph :
+cercle calme -> eclair -> Lissajous -> spirale -> cercle. La boucle est
+fermee (circulaire). Blanc sur noir, et c'est un vrai signal (le WAV le
+dessine).
+Sortie : samples/structure_circulaire.gif / .mp4 / .wav
 """
 import os, math, subprocess, wave
 import numpy as np
